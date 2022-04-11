@@ -10,7 +10,12 @@ A brief description about this program.
 - Run unit tests: `python3 -m unittest unit_tests.py`
 - Run program: `python3 ....py "<question>?"`
 
+## Requirements
+
 ## Todo
 - [ ] enforce python version
 - [ ] add linter
 - [ ] enforce python standard
+
+## References
+- [1](https://stackoverflow.com/a/25200825)
