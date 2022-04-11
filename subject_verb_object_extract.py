@@ -266,27 +266,6 @@ def to_str(tokens):
     else:
         return ''
 
-# is the input a WH statement?
-def is_wh(tokens):
-    first = tokens[0].lower_
-    return "who" == first or "what" == first or "when" == first or "where" == first
-
-# preprocess input
-def prep(input):
-
-    doc = nlp(input)
-    sents = doc.sents
-    sents = list(sents) # convert generator to list
-
-    # there should only be 1 sentence in the input
-    if len(sents) > 1:
-        raise ValueError("Input is longer than 1 setnence.")
-    elif len(sents) == 0:
-        raise ValueError("Input has 0 sentences.")
-    sent = sents[0]
-
-    return sent
-
 
 # find verbs and their subjects / objects to create SVOs, detect passive/active sentences
 def findSVOs(tokens):
