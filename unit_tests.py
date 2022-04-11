@@ -13,20 +13,20 @@ class TestQuestion(unittest.TestCase):
 
     def test_init_question(self):
         question = Question("What is a youth?")
-        self.assertEquals("What is a youth?", question.question)
+        self.assertEqual("What is a youth?", question.question)
 
     def test_init_svo(self):
         question = Question("What is a youth?")
-        self.assertEquals(["", "", ""], [question.subject, question.predicate, question.object])
+        self.assertEqual(["", "", ""], [question.subject, question.predicate, question.object])
 
 
 class SubjectVerbOjectExtractTest(unittest.TestCase):
 
     def test_svo_1(self):
-        tok = nlp("Where is the nearest bathroom?")
+        tok = nlp("Al Smith was born in 1942.")
+        printDeps(tok)
         svos = findSVOs(tok)
-        # printDeps(tok)
-
+        print("SVOS:", svos)
 
 if __name__ == "__main__":
     unittest.main()

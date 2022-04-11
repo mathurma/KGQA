@@ -208,15 +208,6 @@ def _get_that_resolution(toks):
             return tok.head
     return None
 
-
-# simple stemmer using lemmas
-def _get_lemma(word: str):
-    tokens = nlp(word)
-    if len(tokens) == 1:
-        return tokens[0].lemma_
-    return word
-
-
 # print information for displaying all kinds of things of the parse tree
 def printDeps(toks):
     for tok in toks:
