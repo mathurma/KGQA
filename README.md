@@ -1,10 +1,13 @@
 # KGQA
 A brief description about this program.
  
-## Suggested Reading
+## Reading for Understanding
 - [W3C's Primer for Understanding RDF](https://www.w3.org/TR/rdf11-primer/)
 
 - [Generalized RDF](https://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf)
+
+## Reading for Implementation
+- [parsing RDF files](https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html)
 
 ## Instructions
 - Run unit tests: `python3 -m unittest unit_tests.py`
