@@ -41,4 +41,22 @@ g.add((linda, FOAF.name, Literal("Linda")))
 # Try to pull all S || V || O from an RDF doc
 
 
-# Try to query and RDF doc
+# Try to query an RDF doc
+g = rdflib.Graph()  # have to make the graph object first
+
+# Two parse styles:
+g.parse("http://danbri.org/foaf.rdf#")  # readily avialable online
+g.parse("data/foaf.rdf")  # saved locally
+
+knows_query = """
+SELECT DISTINCT ?aname ?bname
+WHERE {
+    ?a foaf:knows ?b .
+    ?a foaf:name ?aname .
+    ?b foaf:name ?bname .
+}"""
+
+qres = g.query(knows_query)
+for row in qres:
+    print(f"{row.aname} knows {row.bname}")
+   
