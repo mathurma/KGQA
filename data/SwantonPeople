@@ -1,0 +1,6 @@
+@prefix spr/people: <http://example.org/swanton/people/> .
+
+spr/people:AlSmith spr/people:SonOf spr/people:StanleySmith .
+
+spr/people:LorenSmith spr/people:SonOf spr/people:StanleySmith .
+
