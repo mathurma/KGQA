@@ -20,5 +20,12 @@ A brief description about this program.
 - [ ] add linter
 - [ ] enforce python standard
 
+## Research
+- [x] merge RDF graphs
+- [ ] import custom URI
+- [ ] create custom URI
+- [ ] remove namespace from URI
+
 ## References
 - [1](https://stackoverflow.com/a/25200825)
+- [2](https://stackoverflow.com/a/56627856)
