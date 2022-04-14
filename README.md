@@ -24,7 +24,7 @@ A brief description about this program.
 - [x] merge RDF graphs
 - [ ] import custom URI
 - [ ] create custom URI
-- [ ] remove namespace from URI
+- [x] remove namespace from URI
 
 ## References
 - [1](https://stackoverflow.com/a/25200825)

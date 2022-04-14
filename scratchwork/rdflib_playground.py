@@ -99,7 +99,8 @@ def extended_example():
     g = rdflib.Graph()
     g.parse("data/foaf.rdf")
 
-    preds = list({pred for subj, pred, obj in g})
+    preds = list({ pred.n3(g.namespace_manager) # n3 format to afix with prefix (simplify output)
+        for subj, pred, obj in g})
     preds.sort()
     print(*preds, sep='\n')
 

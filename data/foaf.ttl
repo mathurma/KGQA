@@ -39,52 +39,40 @@
             air:iata "BRS"@en ;
             air:icao "EGGD"@en ] ;
     owl:differentFrom [ a foaf:Person ;
-            foaf:img <http://www.geocities.com/danbfan/Ford3.jpg> ;
-            foaf:isPrimaryTopicOf <http://www.geocities.com/danbfan/> ;
+            foaf:homepage <http://hitdanback.com/> ;
             foaf:name "Dan Brickley"@en ],
         [ a foaf:Person ;
-            foaf:homepage <http://hitdanback.com/> ;
+            foaf:img <http://www.geocities.com/danbfan/Ford3.jpg> ;
+            foaf:isPrimaryTopicOf <http://www.geocities.com/danbfan/> ;
             foaf:name "Dan Brickley"@en ] ;
     owl:sameAs <http://foaf.me/danbri#me> ;
     foaf:aimChatID "danbri_2002"@en ;
     foaf:dateOfBirth "1972-01-09"@en ;
     foaf:holdsAccount [ a foaf:OnlineAccount ;
-            foaf:accountName "danbrickley"@en ;
-            foaf:accountServiceHomepage <http://www.skype.com/> ],
-        [ a foaf:OnlineAccount ;
             foaf:accountName "danbri"@en ;
             foaf:accountProfilePage <http://del.icio.us/danbri/> ;
             foaf:accountServiceHomepage <http://del.icio.us> ],
         [ a foaf:OnlineAccount ;
-            foaf:accountName "danbri"@en ;
-            foaf:accountProfilePage <http://www.flickr.com/people/danbri/> ;
-            foaf:accountServiceHomepage <http://www.flickr.com/> ],
+            foaf:accountName "danbrickley"@en ;
+            foaf:accountServiceHomepage <http://www.skype.com/> ],
         [ a foaf:OnlineAccount ;
             foaf:accountName "danbri"@en ;
             foaf:accountProfilePage <http://danbri.livejournal.com/> ;
-            foaf:accountServiceHomepage <http://www.livejournal.com/> ] ;
+            foaf:accountServiceHomepage <http://www.livejournal.com/> ],
+        [ a foaf:OnlineAccount ;
+            foaf:accountName "danbri"@en ;
+            foaf:accountProfilePage <http://www.flickr.com/people/danbri/> ;
+            foaf:accountServiceHomepage <http://www.flickr.com/> ] ;
     foaf:homepage <http://danbri.org/> ;
     foaf:img <http://www.w3.org/People/DanBri/mugshot1.jpg> ;
     foaf:jabberID "danbri@jabber.org"@en ;
     foaf:knows [ a foaf:Person ;
-            rdfs:seeAlso [ rdfs:resource "http://perso.hirlimann.net/~ludo/foaf.rdf"@en ] ;
-            foaf:homepage <http://perso.hirlimann.net/~ludo/> ;
-            foaf:mbox_sha1sum "927ed281057a507d882338eb57f74551f6771325"@en ;
-            foaf:name "Ludovic Hirlimann"@en ;
-            foaf:nick "Softkid"@en ;
-            foaf:weblog <http://perso.hirlimann.net/~ludo/blog/> ],
+            foaf:mbox <mailto:ian.sealy@bristol.ac.uk> ],
         [ a foaf:Person ;
-            rdfs:seeAlso <http://www.weird.co.uk/martin/webwho.xrdf> ;
-            foaf:homepage <http://www.weird.co.uk/martin/> ;
-            foaf:mbox <mailto:m.l.poulter@bristol.ac.uk> ;
-            foaf:name "Martin Poulter"@en ],
-        [ a foaf:Person ;
-            foaf:mbox <mailto:libby.miller@bristol.ac.uk>,
-                <mailto:libby@asemantics.com> ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://www.w3.org/People/Barstow/webwho.rdf> ;
-            foaf:mbox <mailto:barstow@w3.org> ;
-            foaf:name "Art Barstow"@en ],
+            foaf:depiction <http://website.lineone.net/~steve_c-t/Scientology/Pickets/10-03-2001/damien.jpg> ;
+            foaf:mbox <mailto:d.m.steer@lse.ac.uk> ;
+            foaf:name "Damian Steer"@en ;
+            foaf:nick "damey"@en ],
         [ a foaf:Person ;
             rdfs:seeAlso <http://www.grorg.org/dean/foaf.rdf> ;
             foaf:homepage <http://www.grorg.org/dean/> ;
@@ -96,67 +84,9 @@
             rdfs:seeAlso <http://bailey.dscga.com/michaelmwho.xrdf> ;
             foaf:mbox <mailto:michaelm@netsol.com> ],
         [ a foaf:Person ;
-            foaf:depiction <http://website.lineone.net/~steve_c-t/Scientology/Pickets/10-03-2001/damien.jpg> ;
-            foaf:mbox <mailto:d.m.steer@lse.ac.uk> ;
-            foaf:name "Damian Steer"@en ;
-            foaf:nick "damey"@en ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://delcorp.org/abbadingo/foaf.rdf> ;
-            foaf:homepage <http://delcorp.org/abbadingo> ;
-            foaf:mbox_sha1sum "3503542c873bb150ccb307743e33b826cac89e32"@en ;
-            foaf:name "Tatiana de la O"@en ;
-            foaf:nick "acracia"@en ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://purl.org/net/eric/webwho.xrdf> ;
-            foaf:depiction <http://www.ilrt.bristol.ac.uk/people/cmdjb/events/dc7/orig/eric.png> ;
-            foaf:homepage <http://purl.org/net/eric/> ;
-            foaf:img <http://www.oclc.org/~emiller/capture.jpg> ;
-            foaf:mbox <mailto:em@w3.org> ;
-            foaf:name "Eric Miller"@en ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://ioctl.org/jan/webwho.xrdf> ;
-            foaf:depiction <http://ioctl.org/jan/test/wizard.jpg> ;
-            foaf:mbox <mailto:jan.grant@bristol.ac.uk> ;
-            foaf:name "Jan Grant"@en ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://purl.org/net/dajobe/webwho.xrdf> ;
-            foaf:mbox <mailto:dave.beckett@bristol.ac.uk> ;
-            foaf:name "Dave Beckett"@en ],
-        [ a foaf:Person ;
-            foaf:mbox <mailto:ian.sealy@bristol.ac.uk> ],
-        [ a foaf:Person ;
-            foaf:mbox <mailto:d.m.steer@lse.ac.uk> ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://hippyrigs.fiendsreunited.com/people/joe/foaf.rdf> ;
-            foaf:mbox <mailto:joe.brickley@btopenworld.com> ;
-            foaf:name "Joe Brickley"@en ],
-        [ a foaf:Person ;
-            foaf:mbox <mailto:mags@apocalypse.org> ],
-        [ a foaf:Person ;
-            foaf:mbox <mailto:craig@coolstuffhere.co.uk> ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://jibbering.com/foaf.rdf> ;
-            foaf:mbox <mailto:jim@jibbering.com> ;
-            foaf:name "Jim Ley"@en ;
-            foaf:nick "JibberJim"@en ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://people.w3.org/amy/foaf.rdf> ;
-            foaf:mbox_sha1sum "1839a1cc2e719a85ea7d9007f587b2899cd94064"@en ;
-            foaf:name "Amy van der Hiel"@en ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://www.w3.org/People/Connolly/home-smart.rdf> ;
-            foaf:mbox <mailto:connolly@w3.org> ;
-            foaf:name "Dan Connolly"@en ;
-            foaf:nick "DanCon"@en ],
-        [ a foaf:Person ;
-            rdfs:seeAlso <http://www.aaronsw.com/about.xrdf> ;
-            foaf:made <http://www.blogspace.com/rss/rss10> ;
-            foaf:name "Aaron Swartz"@en ],
-        [ a foaf:Person ;
-            foaf:depiction <http://rdfweb.org/people/danbri/rdfweb/libby.gif> ;
-            foaf:img <http://swordfish.rdfweb.org/~libby/libby.jpg> ;
-            foaf:mbox <mailto:libby.miller@bristol.ac.uk> ;
-            foaf:name "Libby Miller"@en ],
+            rdfs:seeAlso <http://www.w3.org/People/Barstow/webwho.rdf> ;
+            foaf:mbox <mailto:barstow@w3.org> ;
+            foaf:name "Art Barstow"@en ],
         [ a foaf:Person ;
             rdfs:seeAlso <http://www.ldodds.com/foaf/mrbenn.rdf> ;
             foaf:homepage <http://www.mrbenn.co.uk> ;
@@ -171,6 +101,76 @@
                 <mailto:edd@xmlhack.com> ;
             foaf:name "Edd Dumbill"@en ;
             foaf:nick "edd"@en ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://hippyrigs.fiendsreunited.com/people/joe/foaf.rdf> ;
+            foaf:mbox <mailto:joe.brickley@btopenworld.com> ;
+            foaf:name "Joe Brickley"@en ],
+        [ a foaf:Person ;
+            foaf:depiction <http://rdfweb.org/people/danbri/rdfweb/libby.gif> ;
+            foaf:img <http://swordfish.rdfweb.org/~libby/libby.jpg> ;
+            foaf:mbox <mailto:libby.miller@bristol.ac.uk> ;
+            foaf:name "Libby Miller"@en ],
+        [ a foaf:Person ;
+            foaf:mbox <mailto:d.m.steer@lse.ac.uk> ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://jibbering.com/foaf.rdf> ;
+            foaf:mbox <mailto:jim@jibbering.com> ;
+            foaf:name "Jim Ley"@en ;
+            foaf:nick "JibberJim"@en ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://www.weird.co.uk/martin/webwho.xrdf> ;
+            foaf:homepage <http://www.weird.co.uk/martin/> ;
+            foaf:mbox <mailto:m.l.poulter@bristol.ac.uk> ;
+            foaf:name "Martin Poulter"@en ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://people.w3.org/amy/foaf.rdf> ;
+            foaf:mbox_sha1sum "1839a1cc2e719a85ea7d9007f587b2899cd94064"@en ;
+            foaf:name "Amy van der Hiel"@en ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://purl.org/net/dajobe/webwho.xrdf> ;
+            foaf:mbox <mailto:dave.beckett@bristol.ac.uk> ;
+            foaf:name "Dave Beckett"@en ],
+        [ a foaf:Person ;
+            rdfs:seeAlso [ rdfs:resource "http://perso.hirlimann.net/~ludo/foaf.rdf"@en ] ;
+            foaf:homepage <http://perso.hirlimann.net/~ludo/> ;
+            foaf:mbox_sha1sum "927ed281057a507d882338eb57f74551f6771325"@en ;
+            foaf:name "Ludovic Hirlimann"@en ;
+            foaf:nick "Softkid"@en ;
+            foaf:weblog <http://perso.hirlimann.net/~ludo/blog/> ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://purl.org/net/eric/webwho.xrdf> ;
+            foaf:depiction <http://www.ilrt.bristol.ac.uk/people/cmdjb/events/dc7/orig/eric.png> ;
+            foaf:homepage <http://purl.org/net/eric/> ;
+            foaf:img <http://www.oclc.org/~emiller/capture.jpg> ;
+            foaf:mbox <mailto:em@w3.org> ;
+            foaf:name "Eric Miller"@en ],
+        [ a foaf:Person ;
+            foaf:mbox <mailto:craig@coolstuffhere.co.uk> ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://www.aaronsw.com/about.xrdf> ;
+            foaf:made <http://www.blogspace.com/rss/rss10> ;
+            foaf:name "Aaron Swartz"@en ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://www.w3.org/People/Connolly/home-smart.rdf> ;
+            foaf:mbox <mailto:connolly@w3.org> ;
+            foaf:name "Dan Connolly"@en ;
+            foaf:nick "DanCon"@en ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://delcorp.org/abbadingo/foaf.rdf> ;
+            foaf:homepage <http://delcorp.org/abbadingo> ;
+            foaf:mbox_sha1sum "3503542c873bb150ccb307743e33b826cac89e32"@en ;
+            foaf:name "Tatiana de la O"@en ;
+            foaf:nick "acracia"@en ],
+        [ a foaf:Person ;
+            foaf:mbox <mailto:mags@apocalypse.org> ],
+        [ a foaf:Person ;
+            foaf:mbox <mailto:libby.miller@bristol.ac.uk>,
+                <mailto:libby@asemantics.com> ],
+        [ a foaf:Person ;
+            rdfs:seeAlso <http://ioctl.org/jan/webwho.xrdf> ;
+            foaf:depiction <http://ioctl.org/jan/test/wizard.jpg> ;
+            foaf:mbox <mailto:jan.grant@bristol.ac.uk> ;
+            foaf:name "Jan Grant"@en ],
         <http://mmt.me.uk/foaf.rdf#mischa>,
         <http://www.ils.unc.edu/~janeg/foaf.rdf#me>,
         <http://www.w3.org/People/Berners-Lee/card#i> ;
@@ -250,6 +250,12 @@
 <mailto:daniel.brickley@bristol.ac.uk> dcterms:isReplacedBy <mailto:danbri@danbri.org> .
 
 [] a foaf:Person ;
+    rdfs:seeAlso <http://www.libbymiller.com/webwho.xrdf> ;
+    foaf:mbox <mailto:libby.miller@bristol.ac.uk> ;
+    foaf:name "Libby Miller"@en ;
+    foaf:workplaceHomepage <http://ilrt.org/> .
+
+[] a foaf:Person ;
     foaf:knows [ a foaf:Person ;
             foaf:made <http://www.glandscape.com/cgi-bin/prnxml.rss> ;
             foaf:name "Pastor N Pizzor"@en ] ;
@@ -257,17 +263,10 @@
     foaf:name "Martin L Poulter"@en .
 
 [] a foaf:Person ;
-    foaf:img <http://www.slobsquad.co.uk/images/me-res.JPG> ;
-    foaf:mbox <mailto:craig@coolstuffhere.co.uk> ;
-    foaf:name "Craig Dibble"@en ;
-    foaf:wife [ a foaf:Person ;
-            foaf:name "Liz Dibble"@en ] .
-
-[] a foaf:Person ;
-    rdfs:seeAlso <http://www.libbymiller.com/webwho.xrdf> ;
-    foaf:mbox <mailto:libby.miller@bristol.ac.uk> ;
-    foaf:name "Libby Miller"@en ;
-    foaf:workplaceHomepage <http://ilrt.org/> .
+    rdfs:seeAlso <http://www.apocalypse.org/~mags/webwho.xrdf> ;
+    foaf:img <http://purl.org/net/danbri/2000/06/mh.jpg> ;
+    foaf:mbox <mailto:mags@apocalypse.org> ;
+    foaf:name "Margaret Hart"@en .
 
 [] a foaf:Person ;
     rdfs:seeAlso <http://ilrt.org/people/bzims/webwho.xrdf> ;
@@ -275,8 +274,9 @@
     foaf:name "Ian Sealy"@en .
 
 [] a foaf:Person ;
-    rdfs:seeAlso <http://www.apocalypse.org/~mags/webwho.xrdf> ;
-    foaf:img <http://purl.org/net/danbri/2000/06/mh.jpg> ;
-    foaf:mbox <mailto:mags@apocalypse.org> ;
-    foaf:name "Margaret Hart"@en .
+    foaf:img <http://www.slobsquad.co.uk/images/me-res.JPG> ;
+    foaf:mbox <mailto:craig@coolstuffhere.co.uk> ;
+    foaf:name "Craig Dibble"@en ;
+    foaf:wife [ a foaf:Person ;
+            foaf:name "Liz Dibble"@en ] .
 
