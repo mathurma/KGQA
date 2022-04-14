@@ -128,7 +128,13 @@ def try_to_query():
         print(f"{row.aname} knows {row.bname}")
 
 # extended_example() == try_to_pull()
-print("*"*40)
-extended_example()
-print("*"*40)
-try_to_pull()
+# print("*"*40)
+# extended_example()
+# print("*"*40)
+# try_to_pull()
+
+
+
+g = rdflib.Graph()
+g.parse("data/foaf.rdf") # came from http://xmlns.com/foaf/spec/index.rdf
+g.serialize("data/foaf2.ttl")
