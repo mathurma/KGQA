@@ -127,14 +127,23 @@ def try_to_query():
     for row in qres:
         print(f"{row.aname} knows {row.bname}")
 
-# extended_example() == try_to_pull()
-# print("*"*40)
-# extended_example()
-# print("*"*40)
-# try_to_pull()
+def try_custom_import():
+    import SPR
+    from rdflib.namespace import RDF
+    from rdflib import Graph, URIRef, Literal, BNode
 
+    SPR = rdflib.Namespace(SPR)
+    print("RDF:", type(RDF))
+    print("SPR:", type(SPR))
 
+    g = Graph()
+    g.bind("SPR", SPR)
 
-g = rdflib.Graph()
-g.parse("data/foaf.rdf") # came from http://xmlns.com/foaf/spec/index.rdf
-g.serialize("data/foaf2.ttl")
+    orchard = URIRef("https://swantonpoppycp.github.io/CalPoppy/SPR/KG/UPickAppleOrchard")
+    address = Literal("123 San Simeon, CA 9000")
+
+    # g.add((orchard, RDF.type, SPR.Property))
+    # g.add((orchard, SPR.address, SPR.Property))
+    print(g.serialize())
+
+try_custom_import()
