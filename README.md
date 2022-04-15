@@ -25,7 +25,9 @@ A brief description about this program.
 - [ ] import custom URI
 - [ ] create custom URI
 - [x] remove namespace from URI
+- [ ] check that all URI's are being used correctly
 
 ## References
 - [1](https://stackoverflow.com/a/25200825)
 - [2](https://stackoverflow.com/a/56627856)
+- [3](https://stackoverflow.com/a/66114342)
