@@ -1,0 +1,20 @@
+# Package directory SPR
+RDF: <class 'rdflib.namespace.DefinedNamespaceMeta'>
+SPR: <class 'rdflib.namespace.DefinedNamespaceMeta'>
+Traceback (most recent call last):
+  File "/Users/matthew/Desktop/Thesis/KGQA/scratchwork/rdflib_playground.py", line 148, in <module>
+    try_custom_import()
+  File "/Users/matthew/Desktop/Thesis/KGQA/scratchwork/rdflib_playground.py", line 144, in try_custom_import
+    g.add((orchard, RDF.type, SPR.Property))
+
+
+# Current directory SPR
+RDF: <class 'rdflib.namespace.DefinedNamespaceMeta'>
+SPR: <class 'module'>
+<module 'SPR' from '/Users/matthew/Desktop/Thesis/KGQA/scratchwork/SPR.py'> does not look like a valid URI, trying to serialize this will break.
+Traceback (most recent call last):
+  File "/Users/matthew/Desktop/Thesis/KGQA/scratchwork/rdflib_playground.py", line 148, in <module>
+    try_custom_import()
+  File "/Users/matthew/Desktop/Thesis/KGQA/scratchwork/rdflib_playground.py", line 144, in try_custom_import
+    g.add((orchard, RDF.type, SPR.Property))
+AttributeError: module 'SPR' has no attribute 'Property'

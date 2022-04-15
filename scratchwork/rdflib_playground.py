@@ -128,22 +128,25 @@ def try_to_query():
         print(f"{row.aname} knows {row.bname}")
 
 def try_custom_import():
-    import SPR
-    from rdflib.namespace import RDF
+    # import SPR_FOAF
+    from rdflib.namespace import RDF, SPR
     from rdflib import Graph, URIRef, Literal, BNode
+    from rdflib.namespace import Namespace
 
-    SPR = rdflib.Namespace(SPR)
+    # SPR_FOAF = Namespace(SPR_FOAF)
+    # type(RDF)(SPR_FOAF)
     print("RDF:", type(RDF))
     print("SPR:", type(SPR))
 
     g = Graph()
+    # g.parse(SPR)
     g.bind("SPR", SPR)
 
     orchard = URIRef("https://swantonpoppycp.github.io/CalPoppy/SPR/KG/UPickAppleOrchard")
     address = Literal("123 San Simeon, CA 9000")
 
-    # g.add((orchard, RDF.type, SPR.Property))
-    # g.add((orchard, SPR.address, SPR.Property))
-    print(g.serialize())
+    g.add((orchard, RDF.type, SPR.Agent))
+    # g.add((orchard, SPR.address, SPR_FOAF.Property))
+    # print(g.serialize())
 
 try_custom_import()
