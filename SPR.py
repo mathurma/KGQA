@@ -17,20 +17,9 @@ class SPR(DefinedNamespace):
 
     # http://www.w3.org/1999/02/22-rdf-syntax-ns#Property
     # Predicates
-    account: URIRef  # Indicates an account held by this agent.
-    accountName: URIRef  # Indicates the name (identifier) associated with this online account.
-    accountServiceHomepage: URIRef  # Indicates a homepage of the service provide for this online account.
     age: URIRef  # The age in years of some agent.
     based_near: URIRef  # A location that something is based near, for some broadly human notion of near.
     birthday: URIRef  # The birthday of this Agent, represented in mm-dd string form, eg. '12-31'.
-    currentProject: URIRef  # A current project this person works on.
-    depiction: URIRef  # A depiction of some thing.
-    depicts: URIRef  # A thing depicted in this representation.
-
-
-    topic_interest: URIRef  # A thing of interest to this person.
-    workInfoHomepage: URIRef  # A work info homepage of some person; a page about their work for some organization.
-    workplaceHomepage: URIRef  # A workplace homepage of some person; the homepage of an organization they work for.
     coordinates: URIRef  # GPS coordinates.
     address: URIRef  # A physical mailing address.
     fun_fact: URIRef  # An interesting and niche tidbit about a Person.
