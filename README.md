@@ -12,6 +12,10 @@ A brief description about this program.
 ## Instructions
 - Run unit tests: `python3 -m unittest unit_tests.py`
 - Run program: `python3 ....py "<question>?"`
+- Import custom schema to RDFLib:
+  - locate your RDFlib installation
+  - place your RDFLib Namespace class file in the `rdflib/namespace` directory
+  - ensure your Namespace class file references an eligible URI _(ex: `http://www.w3.org/1999/02/22-rdf-syntax-ns#`)_
 
 ## Requirements
 
@@ -26,6 +30,7 @@ A brief description about this program.
 - [ ] create custom URI
 - [x] remove namespace from URI
 - [ ] check that all URI's are being used correctly
+- [ ] visualize RDF graph
 
 ## References
 - [1](https://stackoverflow.com/a/25200825)
