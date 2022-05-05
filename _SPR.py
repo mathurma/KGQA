@@ -19,7 +19,7 @@ class SPR(DefinedNamespace):
     # Predicates
     age: URIRef  # The age in years of some agent.
     based_near: URIRef  # A location that something is based near, for some broadly human notion of near.
-    birthday: URIRef  # The birthday of this Agent, represented in mm-dd string form, eg. '12-31'.
+    birthday: URIRef  # The birthday of this Person, represented in mm-dd string form, eg. '12-31'.
     coordinates: URIRef  # GPS coordinates.
     address: URIRef  # A physical mailing address.
     fun_fact: URIRef  # An interesting and niche tidbit about a Person.
@@ -36,6 +36,6 @@ class SPR(DefinedNamespace):
     # A type of property that can only have once instance per subject (?)
     homepage: URIRef  # A homepage for some thing.
     logo: URIRef  # A logo representing some thing.
-    mbox: URIRef  # A  personal mailbox, ie. an Internet mailbox associated with exactly one owner, the first owner of this mailbox. This is a 'static inverse functional property', in that  there is (across time and change) at most one individual that ever has any particular value for foaf:mbox.
+    mbox: URIRef  # A personal mailbox, ie. an Internet mailbox associated with exactly one owner.
 
     _NS = Namespace("https://swantonpoppycp.github.io/CalPoppy/SPR/0.1/")  # https://xmlns.com/FOAF/0.1/ links to https://xmlns.com/FOAF/spec/
