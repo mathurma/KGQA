@@ -26,8 +26,8 @@ A brief description about this program.
 
 ## Research
 - [x] merge RDF graphs
-- [ ] import custom URI
-- [ ] create custom URI
+- [x] import custom URI
+- [x] create custom URI
 - [x] remove namespace from URI
 - [ ] check that all URI's are being used correctly
 - [ ] visualize RDF graph
