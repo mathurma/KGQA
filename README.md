@@ -10,12 +10,12 @@ A brief description about this program.
 - [parsing RDF files](https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html)
 
 ## Instructions
-- Run unit tests: `python3 -m unittest unit_tests.py`
-- Run program: `python3 ....py "<question>?"`
 - Import custom schema to RDFLib:
   - locate your RDFlib installation
   - place your RDFLib Namespace class file in the `rdflib/namespace` directory
   - ensure your Namespace class file references an eligible URI _(ex: `http://www.w3.org/1999/02/22-rdf-syntax-ns#`)_
+- Run unit tests: `python3 -m unittest unit_tests.py`
+- Run program: `python3 ....py "<question>?"`
 
 ## Requirements
 
