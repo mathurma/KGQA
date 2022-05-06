@@ -8,11 +8,16 @@ class _Similarity(object):
     def sim(self, w1, w2, method=1):
         if method == 1:
             return self._sim1(w1, w2)
+        # elif method == N:
+        #     return self._simN(w1, w2)
 
-    def _sim1(w1, w2):
-        toks = _Similarity.nlp(w1, w2)
-        tok1, tok2 = toks[1], toks[2]
+    def _sim1(self, w1, w2):
+        toks = _Similarity.nlp(w1 + " " + w2)
+        tok1, tok2 = toks[0], toks[1]
         return tok1.similarity(tok2)
+
+    # def _simN(self, w1, w2):
+    #     pass
 
 class Query(object):
 
