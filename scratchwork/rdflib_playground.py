@@ -149,4 +149,19 @@ def try_custom_import():
     # g.add((orchard, SPR.address, SPR_FOAF.Property))
     # print(g.serialize())
 
-try_custom_import()
+def build_spr():
+    from rdflib.namespace import SPR, RDF
+    from rdflib import Graph, URIRef, Literal, BNode
+    from rdflib.namespace import Namespace
+
+    g = Graph()
+    g.bind("SPR", SPR)
+
+    al_swanton = BNode()  # a GUID is generated
+
+    g.add((al_swanton, RDF.type, SPR.Person))
+    g.add((al_swanton, SPR.fun_fact, "Did you know? Al Swanton lost his leg in a train accident in 1945."))
+
+    g.serialize("SPR_data")
+
+build_spr()

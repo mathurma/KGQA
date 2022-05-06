@@ -8,7 +8,7 @@ class SPR(DefinedNamespace):
 
     The Swanton Pacific Ranch RDF vocabulary, described using W3C RDF Schema and the Web Ontology Language.
 
-    Generated from: https://swantonpoppycp.github.io/CalPoppy/SPR/spec/index.rdf~
+    Generated from: https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl
     Date: 2022-04-14
 
     """
@@ -38,4 +38,4 @@ class SPR(DefinedNamespace):
     logo: URIRef  # A logo representing some thing.
     mbox: URIRef  # A personal mailbox, ie. an Internet mailbox associated with exactly one owner.
 
-    _NS = Namespace("https://swantonpoppycp.github.io/CalPoppy/SPR/0.1/")  # https://xmlns.com/FOAF/0.1/ links to https://xmlns.com/FOAF/spec/
+    _NS = Namespace("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl")  # https://xmlns.com/FOAF/0.1/ links to https://xmlns.com/FOAF/spec/
