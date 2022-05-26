@@ -7,5 +7,5 @@ sprk:AlSmith a spr:Person ;
     spr:birthday "2-31" ;
     spr:fun_fact "Did you know? Al Smith lost his leg in a train accident in 1945." .
 
-Swanton a spr:Facility ;
+sprk:Swanton a spr:Facility ;
     spr:address "123 Pacific Coast Highway, CA" .
