@@ -1,7 +1,8 @@
+@prefix sprk: <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl> .
 @prefix spr: <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-AlSmith a spr:Person ;
+sprk:AlSmith a spr:Person ;
     rdfs:label "Al Smith" ;
     spr:birthday "2-31" ;
     spr:fun_fact "Did you know? Al Smith lost his leg in a train accident in 1945." .
