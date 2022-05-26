@@ -32,49 +32,49 @@ spr:Project a rdfs:Class ;
 	rdfs:label "Project" ;
 	rdfs:comment "A CHANGE ME." .
 
-spr:age a rdf:Property,
+spr:age a rdf:Property ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "age" ;
 	rdfs:comment "The age in years of some Person." .
 
-spr:based_near a rdf:Property,
+spr:based_near a rdf:Property ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "based_near" ;
 	rdfs:comment "A location that something is based near, for some broadly human notion of near." .
 
-spr:birthday a rdf:Property,
+spr:birthday a rdf:Property ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "birthday" ;
 	rdfs:comment "The birthday of this Person, represented in mm-dd string form, eg. '12-31'." .
 
-spr:coordinates a rdf:Property,
+spr:coordinates a rdf:Property ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "coordinates" ;
 	rdfs:comment "GPS coordinates." .
 
-spr:address a rdf:Property,
+spr:address a rdf:Property ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "address" ;
 	rdfs:comment "A physical mailing address." .
 
-spr:fun_fact a rdf:Property,
+spr:fun_fact a rdf:Property ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "fun_fact" ;
 	rdfs:comment "An interesting and niche tidbit about a Person." .
 
-spr:homepage a rdf:Property,
+spr:homepage a rdf:Property ;
 		owl:InverseFunctionalProperty ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "homepage" ;
 	rdfs:comment "A homepage for some thing." .
 
-spr:logo a rdf:Property,
+spr:logo a rdf:Property ;
 		owl:InverseFunctionalProperty ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "logo" ;
 	rdfs:comment "A logo representing some thing." .
 
-spr:mbox a rdf:Property,
+spr:mbox a rdf:Property ;
 		owl:InverseFunctionalProperty ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "mbox" ;
