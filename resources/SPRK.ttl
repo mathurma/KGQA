@@ -1,0 +1,10 @@
+@prefix SPR: <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+AlSmith a SPR:Person ;
+    rdfs:label "Al Smith" ;
+    SPR:birthday "2-31" ;
+    SPR:fun_fact "Did you know? Al Smith lost his leg in a train accident in 1945." .
+
+Swanton a SPR:Facility ;
+    SPR:address "123 Pacific Coast Highway, CA" .
