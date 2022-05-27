@@ -63,19 +63,19 @@ spr:fun_fact a rdf:Property ;
 	rdfs:comment "An interesting and niche tidbit about a Person." .
 
 spr:homepage a rdf:Property ;
-		owl:InverseFunctionalProperty ;
+	owl:InverseFunctionalProperty ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "homepage" ;
 	rdfs:comment "A homepage for some thing." .
 
 spr:logo a rdf:Property ;
-		owl:InverseFunctionalProperty ;
+	owl:InverseFunctionalProperty ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "logo" ;
 	rdfs:comment "A logo representing some thing." .
 
 spr:mbox a rdf:Property ;
-		owl:InverseFunctionalProperty ;
+	owl:InverseFunctionalProperty ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "mbox" ;
 	rdfs:comment "A personal mailbox, ie. an Internet mailbox associated with exactly one owner." .
