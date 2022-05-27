@@ -30,7 +30,7 @@ class SPR(DefinedNamespace):
     Facility: URIRef # A building or man-made structure on the ranch.
     Organization: URIRef  # An organization.
     Person: URIRef  # A person.
-    Project: URIRef  # A project (a collective endeavour of some kind).
+    Project: URIRef  # A collective endeavour of some kind.
 
     # http://www.w3.org/2002/07/owl#InverseFunctionalProperty
     # A type of property that can only have once instance per subject (?)

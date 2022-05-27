@@ -25,12 +25,12 @@ spr:Organization a rdfs:Class ;
 spr:Person a rdfs:Class ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "Person" ;
-	rdfs:comment "A project (a collective endeavour of some kind)." .
+	rdfs:comment "A person." .
 
 spr:Project a rdfs:Class ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
 	rdfs:label "Project" ;
-	rdfs:comment "A CHANGE ME." .
+	rdfs:comment "A collective endeavour of some kind." .
 
 spr:age a rdf:Property ;
 	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> ;
