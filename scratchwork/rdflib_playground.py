@@ -191,7 +191,7 @@ def  test_q_types():
         break
 
 
-def test_q_types_f_spr():
+def test_uri():
     import rdflib
     # from rdflib.namespace import SPR, RDF, FOAF
 
@@ -223,14 +223,38 @@ def test_q_types_f_spr():
     g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl", format="turtle")
 
 
+def test_q_types_f_spr():
+    import rdflib
+    g = rdflib.Graph()
+    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
 
-    # wh_query = """ SELECT DISTINCT ?o WHERE { %s %s ?o . } """
-    # s = "https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#AlSmith"
-    # p = "SPR:birthday"
-    # query = wh_query % (s, p)
+    all_query = """ SELECT DISTINCT ?s ?p ?o WHERE { ?s ?p ?o . } """
+    wh_query = """ SELECT DISTINCT ?o WHERE { %s %s ?o . } """
+    s = "sprk:AlSmith"
+    p = "spr:birthday"
+    query = wh_query % (s, p)
 
-    # qres = g.query(query)
-    # print(qres)
+    qres = g.query(query)
+    x = 0
+    for row in qres:
+        print(x, row.o)
+        x += 1
 
-# build_spr()
+def test_q_types_f_spr():
+    import rdflib
+    g = rdflib.Graph()
+    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#", format="turtle")
+
+    all_query = """ SELECT DISTINCT ?s ?p ?o WHERE { ?s ?p ?o . } """
+    wh_query = """ SELECT DISTINCT ?o WHERE { %s %s ?o . } """
+    s = "sprk:AlSmith"
+    p = "spr:birthday"
+    query = wh_query % (s, p)
+
+    qres = g.query(all_query)
+    x = 0
+    for row in qres:
+        print(x, row.s, row.p, row.o)
+        x += 1
+
 test_q_types_f_spr()
