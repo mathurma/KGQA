@@ -212,13 +212,15 @@ def test_q_types_f_spr():
             # create_input_source <- create_input_source_from_location(file) <- location(None) <- source(str) 
         g.parse("http://danbri.org/foaf.rdf#"),  # defaults to rdf format, performs URL request with format as header and gets content type (for parsing) from file info
             # create_input_source <- create_input_source_from_location(URLinput) <- location(None) <- source(str) 
+        g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
+
 
     # Fails
     def fails():
         g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl")
             # graphy.py:1255 - parser = plugin.get(format:'text/plain' , Parser) <== DNE
     
-    g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
+    g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl", format="turtle")
 
 
 
