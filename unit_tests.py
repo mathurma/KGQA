@@ -1,14 +1,31 @@
 import unittest
+import rdflib
 
 from query import _Similarity
 from question import Question
 from subject_verb_object_extract import findSVOs, printDeps, nlp
 
-class Test_Similarity(unittest.TestCase):
+class TestURI(unittest.TestCase):
+
+    def test_SPR(self):
+        g = rdflib.Graph()
+        g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl", format="turtle")
+        spr_namespace = ('spr', rdflib.term.URIRef('https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl'))
+        self.assertTrue(spr_namespace in g.namespaces)
+
+    def test_SPRK(self):
+        g = rdflib.Graph()
+        g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
+        sprk_namespace = ('sprk', rdflib.term.URIRef('https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl'))
+        self.assertTrue(sprk_namespace in g.namespaces)
+
+
+class TestSimilarity(unittest.TestCase):
 
     def test_sim1_true_pos(self):
         sim = _Similarity()
-        score = sim.sim("same", "same", method=1)
+        score = sim.sim("same", "different", method=1)
+        print("LOOK HERE", score)
         self.assertEqual(1, score)
 
     def test_sim1_false_pos(self):
