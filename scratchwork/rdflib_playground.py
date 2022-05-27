@@ -1,3 +1,4 @@
+import turtle
 import rdflib
 
 
@@ -155,13 +156,79 @@ def build_spr():
     from rdflib.namespace import Namespace
 
     g = Graph()
-    g.bind("SPR", SPR)
+    g.bind("spr", SPR)
 
-    al_swanton = BNode()  # a GUID is generated
+    al_smith = Literal("Al Smith")  # a GUID is generated
+    blank = BNode()
+    al_smith = blank
 
-    g.add((al_swanton, RDF.type, SPR.Person))
-    g.add((al_swanton, SPR.fun_fact, "Did you know? Al Swanton lost his leg in a train accident in 1945."))
+    g.add((al_smith, RDF.type, SPR.Person))
+    # g.add((al_smith, SPR.alias, Literal("Albert B. Smith"))) # term not in SPR - breaks appropriately
+    g.add((al_smith, SPR.fun_fact, Literal("Did you know? Al Smith lost his leg in a train accident in 1945.")))
 
-    g.serialize("SPR_data")
+    g.serialize("SPR_data-default") 
+    g.serialize("SPR_data-turtle", format='turtle') 
+    g.serialize("SPR_data-turtle", format='n3') 
 
-build_spr()
+
+
+def  test_q_types():
+    import rdflib
+    g = rdflib.Graph()
+    g.parse("http://danbri.org/foaf.rdf#")
+
+    knows_query = """
+    SELECT DISTINCT ?aname ?bname ?a ?b
+    WHERE {
+        ?a foaf:knows ?b .
+        ?a foaf:name ?aname .
+        ?b foaf:name ?bname .
+    }"""
+
+    qres = g.query(knows_query)
+    for row in qres:
+        print(f"{row.aname} knows {row.bname}, where {row.aname}'s source is {row.a} and {row.bname}'s source is {row.b}")
+        break
+
+
+def test_q_types_f_spr():
+    import rdflib
+    # from rdflib.namespace import SPR, RDF, FOAF
+
+    g = rdflib.Graph()
+    # g.parse("SPR_data")
+    # g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/data/foaf.rdf")
+    # g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format='text/plain')
+    # g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format='turtle') # format = ...turtle, n3, text/turtle
+    # g.parse("http://danbri.org/foaf.rdf#")
+
+    # Possible formats: "turtle" == "text/turtle" != "n3"
+    #   default format is "application/rdf+xml" (see URLInputSource)
+
+    # Works
+    def works():
+        g.parse("resources/SPRK.ttl", format="turtle"),
+        g.parse("resources/SPRK.ttl"), # <- detects format as ttl with rdflib.util.guess_format bc (create)input_source had attribute 'file'
+            # create_input_source <- create_input_source_from_location(file) <- location(None) <- source(str) 
+        g.parse("http://danbri.org/foaf.rdf#"),  # defaults to rdf format, performs URL request with format as header and gets content type (for parsing) from file info
+            # create_input_source <- create_input_source_from_location(URLinput) <- location(None) <- source(str) 
+
+    # Fails
+    def fails():
+        g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl")
+            # graphy.py:1255 - parser = plugin.get(format:'text/plain' , Parser) <== DNE
+    
+    g.parse("http://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
+
+
+
+    # wh_query = """ SELECT DISTINCT ?o WHERE { %s %s ?o . } """
+    # s = "https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#AlSmith"
+    # p = "SPR:birthday"
+    # query = wh_query % (s, p)
+
+    # qres = g.query(query)
+    # print(qres)
+
+# build_spr()
+test_q_types_f_spr()
