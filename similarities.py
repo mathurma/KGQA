@@ -12,7 +12,7 @@ Functions:
     strict_match(str, str) -> float
     spacy_sim(str, str) -> float
 """
-# all methods of similiarityies return a value from 0 - 1 where 0 is different and 1 is similar
+# all methods of similarities return a value from 0 - 1, where 0 is different and 1 is similar
 
 def lenient_match(term, target):
     from difflib import SequenceMatcher
