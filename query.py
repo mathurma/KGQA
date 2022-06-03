@@ -67,22 +67,24 @@ class Query(object):
 
             for subject in subjects:
                 subj_sc = lenient_match(item, subject)
-                max_subj, subj = subj_sc, subject if subj_sc > max_subj else max_subj, subj
-
-                # Discover tuple unpacking infrequency
-                # subj_sc = lenient_match(item, subject)
-                # t = subj_sc, subject
-                # c = subj_sc > max_subj
-                # f = max_subj, subj
-                # max_subj, subj = t if c else f
+                t = subj_sc, subject
+                c = subj_sc > max_subj
+                f = max_subj, subj
+                max_subj, subj = t if c else f
             
             for predicate in predicates:
                 pred_sc = lenient_match(item, predicate)
-                max_pred, pred = pred_sc, predicate if pred_sc > max_pred else max_pred, pred
+                t = pred_sc, predicate
+                c = pred_sc > max_subj
+                f = max_pred, pred
+                max_pred, pred = t if c else f
 
             for object in objects:
                 obj_sc = lenient_match(item, object)
-                max_obj, obj = obj_sc, object if obj_sc > max_obj else max_obj, obj
+                t = obj_sc, object
+                c = obj_sc > max_obj
+                f = max_obj, obj
+                max_obj, obj = t if c else f
 
             if max_subj > max_pred and max_subj > max_obj:
                 translation["subject"] = subj
