@@ -1,14 +1,16 @@
 from sys import argv
-import question, query
+from question import Question
+from query import Query
 
 def main(input):
-    qn = question(input)  # create question
+    qn = Question(input)  # create question
     qn.parse()  # parse SVO
 
-    qy = query(qn)  # create query
-    # qy.parse("path of SPR graph")  # parse graph
-    # qy.link()  # link qn-S|V|O with graph-S|V|O
-    # qy.run()  # execute query
+    qy = Query(qn)  # create query
+    qy.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl")  # parse graph
+    qy.link() # link qn-S|V|O with graph-S|V|O
+    qy.fill()  # fill query template with graph-S|V|O
+    qy.run()  # execute query
 
     # an = answer(qy)  # create answer
     # an.parse
@@ -19,6 +21,6 @@ def main(input):
 
 if __name__ == '__main__':
     try:
-        main(argv)
+        main("Tell me a fun_fact about AlSmith?")
     except ValueError as ve:
         print(ve)

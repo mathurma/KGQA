@@ -35,11 +35,12 @@ def named_ents_and_pos(question):
 
     # Extract non-entities
     def _tree(tok, pos):
+        print(tok, tok.dep_)
         if tok.dep_ in pos:
             yield tok.text
         for tok in tok.children:
             yield from _tree(tok, pos)
-    for term in _tree(sentence.root, ['nsubj']):
+    for term in _tree(sentence.root, ['nsubj','dobj','pobj']):
         triplets.add(term)
 
     return list(triplets)

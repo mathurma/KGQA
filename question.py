@@ -1,5 +1,8 @@
 import en_core_web_sm
-from subject_verb_object_extract import findSVOs
+import re
+import codec
+import triplets
+
 
 class Question(object):
 
@@ -7,15 +10,13 @@ class Question(object):
 
     def __init__(self, question):
         self.question = question
+        self.type = None
+        self.triplet = None
         self.subject = self.predicate = self.object = ""
         if self._sentence_count() != 1:
             raise ValueError("Question is not one sentence.")
         if not self._is_question():
             raise ValueError("Question does not end with question mark.")
-
-    # TODO - lookintuit.
-    # def __del__(self):
-    #     pass
 
     def _sentence_count(self):
         doc = Question.nlp(self.question)
@@ -26,9 +27,13 @@ class Question(object):
     def _is_question(self):
         return self.question[-1] == '?'
 
+    def label(self):
+        for pattern in codec.QN_TYPES:
+            if re.search(pattern, self.question):
+                self.type = codec.QN_TYPES[pattern]
+                return
+        raise(TypeError("Question type cannot be identified"))
+
     def parse(self):
-        doc = Question.nlp(self.question) 
-        svo = findSVOs(doc)[0]
-        self.subject = svo[0]
-        self.predicate = svo[1]
-        self.object = svo[2]
+        # Interchange which triplet retrieval method is used
+        self.triplet = triplets.named_ents_and_pos(self.question)

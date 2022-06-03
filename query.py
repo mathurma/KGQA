@@ -1,37 +1,135 @@
+from cmath import inf
 import rdflib
-import en_core_web_sm
+import re
+import codec
 
-class _Similarity(object):
-
-    nlp =  en_core_web_sm.load()
-
-    def sim(self, w1, w2, method=1):
-        if method == 1:
-            return self._sim1(w1, w2)
-        # elif method == N:
-        #     return self._simN(w1, w2)
-
-    def _sim1(self, w1, w2):
-        toks = _Similarity.nlp(w1 + " " + w2)
-        tok1, tok2 = toks[0], toks[1]
-        return tok1.similarity(tok2)
-
-    # def _simN(self, w1, w2):
-    #     pass
+from similarities import lenient_match
 
 class Query(object):
 
     def __init__(self, question):
-        self.query = None
         self.graph = rdflib.Graph()
         self.question = question
+        self.filler = ["?s", "?p", "?o"]
+        self.query = None
+        self.result = None
+    
+    def _remove_ns(self, graph: rdflib.Graph, iri: str):
+        for prefix, namespace in graph.namespaces():
+            namespace = namespace.toPython()
+            if namespace in iri:
+                return iri.replace(namespace, "")
+        return iri
+
+    def _get_subjects(self, graph: rdflib.Graph):
+        subjs = list({subj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
+        subjs = [subj.toPython() for subj in subjs]
+        subjs.sort()
+        return subjs
+
+    def _get_predicates(self, graph: rdflib.Graph):
+        preds = list({pred for subj, pred, obj in graph}) # a list of rdflib.URIrefs
+        preds = [pred.toPython() for pred in preds]
+        preds.sort()
+        return preds
+
+    def _get_predicates(self, graph: rdflib.Graph):
+        objs = list({obj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
+        objs = [obj.toPython() for obj in objs]
+        objs.sort()
+        return objs
 
     def parse(self, path):
-       self.graph.parse(path)
+       self.graph.parse(path, format="turtle")
 
     def link(self):
+        # Interchange which similarity score algorithm is used
+
+        # Prep dictionary
+        translation = {
+            "subject": None,
+            "predicate": None,
+            "Object": None
+        }
+
+        # Gather SPO from graph
+        subjects = self._get_subjects(self.graph)
+        subjects = [self._remove_ns(self.graph, subj) for subj in subjects]
+        predicates = self._get_predicates(self.graph)
+        predicates = [self._remove_ns(self.graph, pred) for pred in predicates]
+        objects = self._get_predicates(self.graph)
+        objects = [self._remove_ns(self.graph, obj) for obj in objects]
+
+        for item in self.question.triplet:
+            max_subj, subj = -inf, ""
+            max_pred, pred = -inf, ""
+            max_obj, obj = -inf, ""
+
+            for subject in subjects:
+                subj_sc = lenient_match(item, subject)
+                max_subj, subj = subj_sc, subject if subj_sc > max_subj else max_subj, subj
+
+                # Discover tuple unpacking infrequency
+                # subj_sc = lenient_match(item, subject)
+                # t = subj_sc, subject
+                # c = subj_sc > max_subj
+                # f = max_subj, subj
+                # max_subj, subj = t if c else f
+            
+            for predicate in predicates:
+                pred_sc = lenient_match(item, predicate)
+                max_pred, pred = pred_sc, predicate if pred_sc > max_pred else max_pred, pred
+
+            for object in objects:
+                obj_sc = lenient_match(item, object)
+                max_obj, obj = obj_sc, object if obj_sc > max_obj else max_obj, obj
+
+            if max_subj > max_pred and max_subj > max_obj:
+                translation["subject"] = subj
+            elif max_pred > max_subj and max_pred > max_obj:
+                translation["predicate"] = pred
+            elif max_obj > max_subj and max_obj > max_pred:
+                translation["object"] = obj
+
+        self.filler[0] = translation["subject"] if translation["subject"] else self.filler[0]
+        self.filler[1] = translation["object"] if translation["object"] else self.filler[1]
+        self.filler[2] = translation["predicate"] if translation["predicate"] else self.filler[2]
+
+        # PSEUDO
+        # for each triplet:
+        #   for each subject from graph:
+        #       compare sim and store highest
+        #   for each predicate from graph:
+        #       compare sim and store highest
+        #   for each object form graph:
+        #       compare sim and store highest
+        #   select highest of subject, predicate, object
+        # 
+        # if missing s p or o
+        #   replace with placeholder
+        # 
+        # for blank s p or o in query
+        #   substitute appropriate triplet
+
+        pass
+
+
+    def fill(self):
+        QN = self.question.type()
+        self.query = codec.QY_TYPES[QN]
+
+        self.query = self.query % (self.filler[0], self.filler[1], self.filler[2])
+
+        # s = "sprk:AlSmith"
+        # p = "spr:birthday"
+        # query = wh_query % (s, p)
+
+
         # if conditions are met:
             # determine eligible subject from graph
             # determine eligible predicate from graph
             # determine eligible object from graph
-        pass
+        
+
+    def run(self):
+        self.result = self.graph.query(self.query)
