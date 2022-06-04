@@ -4,78 +4,78 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
-<https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> a owl:Ontology ;
+spr a owl:Ontology ;
 	dc:title "The Swanton Pacific Ranch vocabulary (SPR)" .
 
 spr:Property a rdfs:Class ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "Property" ;
 	rdfs:comment "A designated, natural land or space on the ranch." .
 
 spr:Facility a rdfs:Class ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "Facility" ;
 	rdfs:comment "A building or man-made structure on the ranch." .
 
 spr:Organization a rdfs:Class ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "Organization" ;
 	rdfs:comment "An organization." .
 
 spr:Person a rdfs:Class ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "Person" ;
 	rdfs:comment "A person." .
 
 spr:Project a rdfs:Class ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "Project" ;
 	rdfs:comment "A collective endeavour of some kind." .
 
 spr:age a rdf:Property ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "age" ;
 	rdfs:comment "The age in years of some Person." .
 
 spr:based_near a rdf:Property ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "based_near" ;
 	rdfs:comment "A location that something is based near, for some broadly human notion of near." .
 
 spr:birthday a rdf:Property ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "birthday" ;
 	rdfs:comment "The birthday of this Person, represented in mm-dd string form, eg. '12-31'." .
 
 spr:coordinates a rdf:Property ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "coordinates" ;
 	rdfs:comment "GPS coordinates." .
 
 spr:address a rdf:Property ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "address" ;
 	rdfs:comment "A physical mailing address." .
 
 spr:fun_fact a rdf:Property ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "fun_fact" ;
 	rdfs:comment "An interesting and niche tidbit about a Person." .
 
 spr:homepage a rdf:Property ,
 	owl:InverseFunctionalProperty ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "homepage" ;
 	rdfs:comment "A homepage for some thing." .
 
 spr:logo a rdf:Property ,
 	owl:InverseFunctionalProperty ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "logo" ;
 	rdfs:comment "A logo representing some thing." .
 
 spr:mbox a rdf:Property ,
 	owl:InverseFunctionalProperty ;
-	rdfs:isDefinedBy <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#> ;
+	rdfs:isDefinedBy spr ;
 	rdfs:label "mbox" ;
 	rdfs:comment "A personal mailbox, ie. an Internet mailbox associated with exactly one owner." .
