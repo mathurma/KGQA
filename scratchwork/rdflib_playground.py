@@ -246,13 +246,15 @@ def test_q_types_f_spr():
     # print(g.base)
     # print(g.identifier)
     # print([namespace for namespace in g.namespaces()])
-    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
+    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#", format="turtle")
     print("post")
     # print(g.base)
     # print(g.identifier)
     # print([namespace for namespace in g.namespaces()])
 
     qres = g.query(' SELECT ?o WHERE { sprk:AlSmith spr:fun_fact ?o . } ')
+    for row in qres:
+        print(row)
 
 
     # all_query = """ SELECT DISTINCT ?s ?p ?o WHERE { ?s ?p ?o . } """
@@ -269,15 +271,13 @@ def test_q_types_f_spr():
 
 def test_pull_prefixes():
     g = rdflib.Graph()
-    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
+    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#", format="turtle")
 
     l = []
     for s, p, o in g:
-        print(s, type(s))
-        rdflib.term.URIRef(s)
-        s.n3(g.namespace_manager)
-        p2 = p.n3(g.namespace_manager)
-        l.append(p2)
+        print(s, type(s), s.n3(g.namespace_manager))
+        print(p, type(p), p.n3(g.namespace_manager))
+        print(o, type(o), o.n3(g.namespace_manager))
 
     for ns in g.namespaces():
         print(ns)
