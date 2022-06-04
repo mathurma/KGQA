@@ -1,4 +1,4 @@
-@prefix sprk: <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl> .
+@prefix sprk: <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#> .
 @prefix spr: <https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
