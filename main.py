@@ -4,6 +4,7 @@ from query import Query
 
 def main(input):
     qn = Question(input)  # create question
+    qn.label()  # label type
     qn.parse()  # parse SVO
 
     qy = Query(qn)  # create query
@@ -21,6 +22,6 @@ def main(input):
 
 if __name__ == '__main__':
     try:
-        main("Tell me a fun_fact about AlSmith?")
+        main(argv[1])
     except ValueError as ve:
         print(ve)
