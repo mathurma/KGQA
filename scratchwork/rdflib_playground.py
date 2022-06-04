@@ -267,4 +267,22 @@ def test_q_types_f_spr():
     #     print(x, row.s, row.p, row.o, "row:", row)
     #     x += 1
 
-test_q_types_f_spr()
+def test_pull_prefixes():
+    g = rdflib.Graph()
+    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
+
+    l = []
+    for s, p, o in g:
+        print(s, type(s))
+        rdflib.term.URIRef(s)
+        s.n3(g.namespace_manager)
+        p2 = p.n3(g.namespace_manager)
+        l.append(p2)
+
+    for ns in g.namespaces():
+        print(ns)
+    
+    pass
+
+
+test_pull_prefixes()
