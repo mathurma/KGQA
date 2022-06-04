@@ -18,7 +18,6 @@ def try_to_build():
                             PROF, PROV, RDF, RDFS, SDO, SH, SKOS, SOSA, SSN, TIME, \
                             VOID, XMLNS, XSD
 
-
     from rdflib import Graph, URIRef, Literal, BNode
     from rdflib.namespace import FOAF, RDF
 
@@ -243,18 +242,29 @@ def test_q_types_f_spr():
 def test_q_types_f_spr():
     import rdflib
     g = rdflib.Graph()
-    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#", format="turtle")
+    print("pre")
+    # print(g.base)
+    # print(g.identifier)
+    # print([namespace for namespace in g.namespaces()])
+    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
+    print("post")
+    # print(g.base)
+    # print(g.identifier)
+    # print([namespace for namespace in g.namespaces()])
 
-    all_query = """ SELECT DISTINCT ?s ?p ?o WHERE { ?s ?p ?o . } """
-    wh_query = """ SELECT DISTINCT ?o WHERE { %s %s ?o . } """
-    s = "sprk:AlSmith"
-    p = "spr:birthday"
-    query = wh_query % (s, p)
+    qres = g.query(' SELECT ?o WHERE { sprk:AlSmith spr:fun_fact ?o . } ')
 
-    qres = g.query(all_query)
-    x = 0
-    for row in qres:
-        print(x, row.s, row.p, row.o)
-        x += 1
+
+    # all_query = """ SELECT DISTINCT ?s ?p ?o WHERE { ?s ?p ?o . } """
+    # wh_query = """ SELECT DISTINCT ?o WHERE { %s %s ?o . } """
+    # s = "sprk:AlSmith"
+    # p = "spr:birthday"
+    # query = wh_query % (s, p)
+
+    # qres = g.query(all_query)
+    # x = 0
+    # for row in qres:
+    #     print(x, row.s, row.p, row.o, "row:", row)
+    #     x += 1
 
 test_q_types_f_spr()

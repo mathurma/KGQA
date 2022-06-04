@@ -11,8 +11,8 @@ QN_TYPES = {
 }
 
 QY_TYPES = {
-    "direct":""" SELECT ?o WHERE { %s %s ?o . }""",
-    "unique_direct":""" SELECT ?o WHERE { %s %s ?o . }""",
+    "direct":""" SELECT ?o WHERE { %s %s %s . }""",
+    "unique_direct":""" SELECT ?o WHERE { %s %s %s . }""",
     "listing":""" SELECT ?s ?p ?o WHERE { %s %s %s . }""",
 }
 

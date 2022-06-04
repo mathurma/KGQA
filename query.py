@@ -54,12 +54,12 @@ class Query(object):
         }
 
         # Gather SPO from graph
-        subjects = self._get_subjects(self.graph)
-        subjects = [self._remove_ns(self.graph, subj) for subj in subjects]
-        predicates = self._get_predicates(self.graph)
-        predicates = [self._remove_ns(self.graph, pred) for pred in predicates]
-        objects = self._get_objects(self.graph)
-        objects = [self._remove_ns(self.graph, obj) for obj in objects]
+        subjects = _get_subjects(self.graph)
+        subjects = [_remove_ns(self.graph, subj) for subj in subjects]
+        predicates = _get_predicates(self.graph)
+        predicates = [_remove_ns(self.graph, pred) for pred in predicates]
+        objects = _get_objects(self.graph)
+        objects = [_remove_ns(self.graph, obj) for obj in objects]
 
         for item in self.question.triplet:
             max_subj, subj = -inf, ""
