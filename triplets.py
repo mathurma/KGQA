@@ -40,7 +40,7 @@ def named_ents_and_pos(question):
             yield tok.text
         for tok in tok.children:
             yield from _tree(tok, pos)
-    for term in _tree(sentence.root, ['nsubj','dobj','pobj']):
+    for term in _tree(sentence.root, ['nsubj','dobj']):
         triplets.add(term)
 
     return list(triplets)

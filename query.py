@@ -5,6 +5,32 @@ import codec
 
 from similarities import lenient_match
 
+
+def _remove_ns(graph: rdflib.Graph, iri: str):
+    for prefix, namespace in graph.namespaces():
+        namespace = namespace.toPython()
+        if namespace in iri:
+            return iri.replace(namespace, "")
+    return iri
+
+def _get_subjects(graph: rdflib.Graph):
+    subjs = list({subj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
+    subjs = [subj.toPython() for subj in subjs]
+    subjs.sort()
+    return subjs
+
+def _get_predicates(graph: rdflib.Graph):
+    preds = list({pred for subj, pred, obj in graph}) # a list of rdflib.URIrefs
+    preds = [pred.toPython() for pred in preds]
+    preds.sort()
+    return preds
+
+def _get_objects(graph: rdflib.Graph):
+    objs = list({obj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
+    objs = [obj.toPython() for obj in objs]
+    objs.sort()
+    return objs
+
 class Query(object):
 
     def __init__(self, question):
@@ -13,31 +39,6 @@ class Query(object):
         self.filler = ["?s", "?p", "?o"]
         self.query = None
         self.result = None
-    
-    def _remove_ns(self, graph: rdflib.Graph, iri: str):
-        for prefix, namespace in graph.namespaces():
-            namespace = namespace.toPython()
-            if namespace in iri:
-                return iri.replace(namespace, "")
-        return iri
-
-    def _get_subjects(self, graph: rdflib.Graph):
-        subjs = list({subj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
-        subjs = [subj.toPython() for subj in subjs]
-        subjs.sort()
-        return subjs
-
-    def _get_predicates(self, graph: rdflib.Graph):
-        preds = list({pred for subj, pred, obj in graph}) # a list of rdflib.URIrefs
-        preds = [pred.toPython() for pred in preds]
-        preds.sort()
-        return preds
-
-    def _get_predicates(self, graph: rdflib.Graph):
-        objs = list({obj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
-        objs = [obj.toPython() for obj in objs]
-        objs.sort()
-        return objs
 
     def parse(self, path):
        self.graph.parse(path, format="turtle")
@@ -49,7 +50,7 @@ class Query(object):
         translation = {
             "subject": None,
             "predicate": None,
-            "Object": None
+            "object": None
         }
 
         # Gather SPO from graph
@@ -57,7 +58,7 @@ class Query(object):
         subjects = [self._remove_ns(self.graph, subj) for subj in subjects]
         predicates = self._get_predicates(self.graph)
         predicates = [self._remove_ns(self.graph, pred) for pred in predicates]
-        objects = self._get_predicates(self.graph)
+        objects = self._get_objects(self.graph)
         objects = [self._remove_ns(self.graph, obj) for obj in objects]
 
         for item in self.question.triplet:
@@ -94,8 +95,8 @@ class Query(object):
                 translation["object"] = obj
 
         self.filler[0] = translation["subject"] if translation["subject"] else self.filler[0]
-        self.filler[1] = translation["object"] if translation["object"] else self.filler[1]
-        self.filler[2] = translation["predicate"] if translation["predicate"] else self.filler[2]
+        self.filler[1] = translation["predicate"] if translation["predicate"] else self.filler[1]
+        self.filler[2] = translation["object"] if translation["object"] else self.filler[2]
 
         # PSEUDO
         # for each triplet:
@@ -117,7 +118,7 @@ class Query(object):
 
 
     def fill(self):
-        QN = self.question.type()
+        QN = self.question.type
         self.query = codec.QY_TYPES[QN]
 
         self.query = self.query % (self.filler[0], self.filler[1], self.filler[2])

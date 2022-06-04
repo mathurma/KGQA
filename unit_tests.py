@@ -76,40 +76,44 @@ class TestQuestion(unittest.TestCase):
 class TestQuery(unittest.TestCase):
 
     def test__remove_ns_remove_all(self):
+        from query import _remove_ns
+
         g = rdflib.Graph()
         g.parse("resources/SPR.ttl")
-
         iri = 'https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl'
-        iri_no_ns = Query._remove_ns(g, iri)
+        iri_no_ns = _remove_ns(g, iri)
         self.assertEqual("", iri_no_ns)
 
     def test__remove_ns_remove_some(self):
+        from query import _remove_ns
+
         g = rdflib.Graph()
         g.parse("resources/SPR.ttl")
-
         iri = 'https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttlFacility'
-        iri_no_ns = Query._remove_ns(g, iri)
+        iri_no_ns = _remove_ns(g, iri)
         self.assertEqual("Facility", iri_no_ns)
 
     def test__remove_ns_remove_none(self):
+        from query import _remove_ns
+
         g = rdflib.Graph()
         g.parse("resources/SPR.ttl")
-
         iri = 'http://danbri.org/foaf.rdf#'
-        iri_no_ns = Query._remove_ns(g, iri)
+        iri_no_ns = _remove_ns(g, iri)
         self.assertEqual("http://danbri.org/foaf.rdf#", iri_no_ns)
 
     def test__get_subjects(self):
+        from query import _get_subjects
+
         g = rdflib.Graph()
         g.parse("resources/SPR.ttl")
-
         ns = 'https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl'
         subjects = ["", "Property", "Facility", "logo", "mbox",
                     "Organization", "Person", "Project", "age", "based_near",
                     "birthday", "coordinates", "address", "fun_fact", "homepage"]
         subjects = {ns+subj for subj in subjects}
         
-        subjs = Query._get_subjects(g)
+        subjs = _get_subjects(g)
         self.assertEqual(subjects, set(subjs))
 
 if __name__ == "__main__":
