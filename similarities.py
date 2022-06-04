@@ -16,7 +16,7 @@ Functions:
 
 def lenient_match(term, target):
     from difflib import SequenceMatcher
-    sm = SequenceMatcher(term, target)
+    sm = SequenceMatcher(None, term, target)
     return sm.ratio()
 
 def strict_match(term, target):
