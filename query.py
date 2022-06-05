@@ -6,13 +6,6 @@ import codec
 from similarities import lenient_match
 
 
-def _remove_ns(graph: rdflib.Graph, iri: str):
-    for prefix, namespace in graph.namespaces():
-        namespace = namespace.toPython()
-        if namespace in iri:
-            return iri.replace(namespace, "")
-    return iri
-
 def _get_pos(graph: rdflib.Graph, pos_idx):
     poss = list({triple[pos_idx] for triple in graph}) # a list of rdflib.URIrefs
     poss = [pos.n3(graph.namespace_manager) for pos in poss]
