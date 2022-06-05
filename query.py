@@ -8,13 +8,30 @@ from similarities import lenient_match
 
 def _get_pos(graph: rdflib.Graph, pos_idx):
     poss = list({triple[pos_idx] for triple in graph}) # a list of rdflib.URIrefs
-    poss = [pos.n3(graph.namespace_manager) for pos in poss]
+    poss = [_pos_to_n3(graph, pos) for pos in poss]
     return poss
+
+def _pos_to_n3(graph: rdflib.Graph, pos):
+    if type(pos) is rdflib.term.URIRef:
+        return pos.n3(graph.namespace_manager)
+    elif type(pos) is rdflib.term.Literal:
+        pos = pos.n3(graph.namespace_manager)
+        pos = _rm_qts(pos)
+        return pos
 
 def _rm_prfx(n3: str):
     idx = n3.find(':')
     if idx >= 0:
         return n3[idx+1::]
+    else:
+        return n3
+
+def _rm_qts(n3: str):
+    print(n3[-1])
+    print(n3)
+    if n3[0] == "'" and n3[-1] == "'" \
+        or n3[0] == "\"" and n3[-1] == "\"" :
+        return n3[1:-2]
     else:
         return n3
 
@@ -91,4 +108,7 @@ class Query(object):
 
         
     def run(self):
-        self.result = self.graph.query(self.query)
+        result = self.graph.query(self.query)
+        self.result = []
+        for row in result:
+            self.result.append([_rm_prfx(_pos_to_n3(self.graph, pos)) for pos in row])

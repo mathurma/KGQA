@@ -288,5 +288,50 @@ def test_pull_prefixes():
     
     pass
 
+def test_get_str_from_res():
+    import rdflib
 
-test_pull_prefixes()
+    # def _rdfterm_to_str(term):
+    #     if type(term) is rdflib.term.Literal:
+    #         return term.value()
+    #     elif type(term) is rdflib.term.URIRef:
+    #         return term.
+
+
+
+    def _pos_prfx(graph: rdflib.Graph, poss):
+        return [pos.n3(graph.namespace_manager) for pos in poss]
+
+    def _get_pos(graph: rdflib.Graph, pos_idx):
+        poss = list({triple[pos_idx] for triple in graph}) # a list of rdflib.URIrefs
+        poss = _pos_prfx(graph, poss)
+        return poss
+
+    def _rm_prfx(n3: str):
+        idx = n3.find(':')
+        if idx >= 0:
+            return n3[idx+1::]
+        else:
+            return n3
+
+
+    g = rdflib.Graph()
+    g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#", format="turtle")
+
+    all_query = """ SELECT DISTINCT ?s ?p ?o WHERE { ?s ?p ?o . } """
+
+    qres = g.query(all_query)
+    for row in qres:
+        print(row)
+        print(type(row)) # rdflib.query.ResultRow
+        srow = _pos_prfx(g, list(row))
+        # srow = [item.n3(graph.namespace_manager) for item in row]
+        # srow_np = [item.]
+        srow_np = [_rm_prfx(item) for item in srow]
+        for item in row:
+            print(item)
+            print(type(item))
+            sitem = item.n3(g.namespace_manager)
+            # itm
+
+test_get_str_from_res()

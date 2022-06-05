@@ -1,26 +1,32 @@
 from sys import argv
 from question import Question
 from query import Query
+from answer import Answer
 
 def main(input):
+
+    # Question Phase
     qn = Question(input)  # create question
-    qn.parse()  # parse SVO
-    qn.label()  # label type
+    qn.parse()  # parse SPO
+    qn.label()  # label question type
 
 
+    # Query Phase
     qy = Query(qn)  # create query
     qy.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#")  # parse graph
-    qy.link() # link qn-S|V|O with graph-S|V|O
-    qy.fill()  # fill query template with graph-S|V|O
-    qy.run()  # execute query
+    qy.link() # link qn-S|P|O with graph-S|P|O
+    qy.fill()  # fill query template with graph-S|P|O
+    qy.run()  # run query
 
-    # an = Answer(qy)  # create answer
-    # an.shape()
-    # an.fix()
-    # return an.answer
+    ## Answer Phase
+    an = Answer(qy)  # create answer
+    an.fill()  # fill answer template with result-S|P|O
+    an.fix()  # fix grammatical errors
 
-    return "Placeholder answer from Matthew"
+    # NOTE: to be removed once Answer functions above are implemented
+    an.tmp_ans()
 
+    return an.answer
 
 
 if __name__ == '__main__':
@@ -28,3 +34,7 @@ if __name__ == '__main__':
         main(argv[1])
     except ValueError as ve:
         print(ve)
+    except TypeError as te:
+        print(te)
+    except Exception as e:
+        print(e)
