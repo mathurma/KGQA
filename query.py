@@ -25,24 +25,6 @@ def _rm_prfx(n3: str):
     else:
         return n3
 
-def _get_subjects(graph: rdflib.Graph):
-    subjs = list({subj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
-    subjs = [subj.toPython() for subj in subjs]
-    subjs.sort()
-    return subjs
-
-def _get_predicates(graph: rdflib.Graph):
-    preds = list({pred for subj, pred, obj in graph}) # a list of rdflib.URIrefs
-    preds = [pred.toPython() for pred in preds]
-    preds.sort()
-    return preds
-
-def _get_objects(graph: rdflib.Graph):
-    objs = list({obj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
-    objs = [obj.toPython() for obj in objs]
-    objs.sort()
-    return objs
-
 class Query(object):
 
     def __init__(self, question):
