@@ -1,8 +1,28 @@
+"""
+This module contains resources for the query phase.
+The query phase is responsible for:
+    - parsing a knowledge graph
+    - translating SPOs from an input question into SPOs of the knowledge graph
+    - using the translated SPOs to populate a query format based on the input question type
+    - executing the query and storing its results
+
+Classes:
+
+    Query
+
+Functions:
+
+    _get_pos(rdflib.Graph, int) -> list[str]
+    _pos_to_n3(rdflib.Graph, rdflib.term) -> str
+    _rm_qts(str) -> str
+    _rm_prfx(str) -> str
+"""
+
+
 from cmath import inf
 import rdflib
-import re
-import codec
 
+import codec
 from similarities import lenient_match
 
 
@@ -19,13 +39,6 @@ def _pos_to_n3(graph: rdflib.Graph, pos):
         pos = _rm_qts(pos)
         return pos
 
-def _rm_prfx(n3: str):
-    idx = n3.find(':')
-    if idx >= 0:
-        return n3[idx+1::]
-    else:
-        return n3
-
 def _rm_qts(n3: str):
     print(n3[-1])
     print(n3)
@@ -34,6 +47,14 @@ def _rm_qts(n3: str):
         return n3[1:-2]
     else:
         return n3
+
+def _rm_prfx(n3: str):
+    idx = n3.find(':')
+    if idx >= 0:
+        return n3[idx+1::]
+    else:
+        return n3
+
 
 class Query(object):
 

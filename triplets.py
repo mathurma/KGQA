@@ -14,6 +14,7 @@ Functions:
     nltk_pos(str) -> list[str]
 """
 
+
 def named_ents_and_pos(question):
 
     import spacy

@@ -1,7 +1,19 @@
+"""
+This is the primary module of KGQA, and it links functionality from the query, question, and answer phases
+    in order to output an answer to an input question, based on information from a knowledge graph.
+
+Fuctions:
+
+    main(str) -> str
+"""
+
+
 from sys import argv
+
 from question import Question
 from query import Query
 from answer import Answer
+
 
 def main(input):
 
@@ -10,11 +22,10 @@ def main(input):
     qn.parse()  # parse SPO
     qn.label()  # label question type
 
-
     # Query Phase
     qy = Query(qn)  # create query
     qy.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#")  # parse graph
-    qy.link() # link qn-S|P|O with graph-S|P|O
+    qy.link()  # link qn-S|P|O with graph-S|P|O
     qy.fill()  # fill query template with graph-S|P|O
     qy.run()  # run query
 

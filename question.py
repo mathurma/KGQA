@@ -1,5 +1,18 @@
+"""
+This module contains resources for the question phase.
+The question phase is responsible for:
+    - identifying SPOs from an input question
+    - categorizing the question type
+
+Classes:
+
+    Question
+"""
+
+
 import en_core_web_sm
 import re
+
 import codec
 import triplets
 
