@@ -13,6 +13,18 @@ def _remove_ns(graph: rdflib.Graph, iri: str):
             return iri.replace(namespace, "")
     return iri
 
+def _get_pos(graph: rdflib.Graph, pos_idx):
+    poss = list({triple[pos_idx] for triple in graph}) # a list of rdflib.URIrefs
+    poss = [pos.n3(graph.namespace_manager) for pos in poss]
+    return poss
+
+def _rm_prfx(n3: str):
+    idx = n3.find(':')
+    if idx >= 0:
+        return n3[idx+1::]
+    else:
+        return n3
+
 def _get_subjects(graph: rdflib.Graph):
     subjs = list({subj for subj, pred, obj in graph}) # a list of rdflib.URIrefs
     subjs = [subj.toPython() for subj in subjs]
@@ -54,12 +66,16 @@ class Query(object):
         }
 
         # Gather SPO from graph
-        subjects = _get_subjects(self.graph)
-        subjects = [_remove_ns(self.graph, subj) for subj in subjects]
-        predicates = _get_predicates(self.graph)
-        predicates = [_remove_ns(self.graph, pred) for pred in predicates]
-        objects = _get_objects(self.graph)
-        objects = [_remove_ns(self.graph, obj) for obj in objects]
+        # subjects = _get_subjects(self.graph)
+        # subjects = [_remove_ns(self.graph, subj) for subj in subjects]
+        # predicates = _get_predicates(self.graph)
+        # predicates = [_remove_ns(self.graph, pred) for pred in predicates]
+        # objects = _get_objects(self.graph)
+        # objects = [_remove_ns(self.graph, obj) for obj in objects]
+        subjects = _get_pos(self.graph, 0)
+        predicates = _get_pos(self.graph, 1)
+        objects = _get_pos(self.graph, 2)
+
 
         for item in self.question.triplet:
             max_subj, subj = -inf, ""
@@ -67,21 +83,21 @@ class Query(object):
             max_obj, obj = -inf, ""
 
             for subject in subjects:
-                subj_sc = lenient_match(item, subject)
+                subj_sc = lenient_match(item, _rm_prfx(subject))
                 t = subj_sc, subject
                 c = subj_sc > max_subj
                 f = max_subj, subj
                 max_subj, subj = t if c else f
             
             for predicate in predicates:
-                pred_sc = lenient_match(item, predicate)
+                pred_sc = lenient_match(item, _rm_prfx(predicate))
                 t = pred_sc, predicate
                 c = pred_sc > max_subj
                 f = max_pred, pred
                 max_pred, pred = t if c else f
 
             for object in objects:
-                obj_sc = lenient_match(item, object)
+                obj_sc = lenient_match(item, _rm_prfx(object))
                 t = obj_sc, object
                 c = obj_sc > max_obj
                 f = max_obj, obj

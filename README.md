@@ -21,8 +21,8 @@ A brief description about this program.
 
 ## Todo
 - [ ] enforce python version
-- [ ] add linter
-- [ ] enforce python standard
+- [x] add linter
+- [x] enforce python standard
 
 ## Research
 - [x] merge RDF graphs

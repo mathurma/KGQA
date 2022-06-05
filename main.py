@@ -4,17 +4,20 @@ from query import Query
 
 def main(input):
     qn = Question(input)  # create question
-    qn.label()  # label type
     qn.parse()  # parse SVO
+    qn.label()  # label type
+
 
     qy = Query(qn)  # create query
-    qy.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl")  # parse graph
+    qy.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#")  # parse graph
     qy.link() # link qn-S|V|O with graph-S|V|O
     qy.fill()  # fill query template with graph-S|V|O
     qy.run()  # execute query
 
-    # an = answer(qy)  # create answer
-    # an.parse
+    # an = Answer(qy)  # create answer
+    # an.shape()
+    # an.fix()
+    # return an.answer
 
     return "Placeholder answer from Matthew"
 

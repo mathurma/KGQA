@@ -281,6 +281,10 @@ def test_pull_prefixes():
 
     for ns in g.namespaces():
         print(ns)
+
+    # rdf=rdflib.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+    # rdflib.term.URIRef(rdf+'type')    
+    # rdflib.term.URIRef(rdf['type'])
     
     pass
 

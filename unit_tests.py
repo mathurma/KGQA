@@ -27,14 +27,14 @@ class TestURI(unittest.TestCase):
 
     def test_parse_SPR(self):
         g = rdflib.Graph()
-        g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl", format="turtle")
-        spr_namespace = ('spr', rdflib.term.URIRef('https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl'))
+        g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#", format="turtle")
+        spr_namespace = ('spr', rdflib.term.URIRef('https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPR.ttl#'))
         self.assertIn(spr_namespace, g.namespaces())
 
     def test_parse_SPRK(self):
         g = rdflib.Graph()
-        g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl", format="turtle")
-        sprk_namespace = ('sprk', rdflib.term.URIRef('https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl'))
+        g.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#", format="turtle")
+        sprk_namespace = ('sprk', rdflib.term.URIRef('https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#'))
         self.assertIn(sprk_namespace, g.namespaces())
 
 class TestSimilarity(unittest.TestCase):
