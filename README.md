@@ -10,7 +10,7 @@ A brief description about this program.
 - [parsing RDF files](https://rdflib.readthedocs.io/en/stable/intro_to_parsing.html)
 
 ## Instructions
-- Import custom schema to RDFLib:
+- Import custom schema to RDFLib (*no longer necessary):
   - locate your RDFlib installation
   - place your RDFLib Namespace class file in the `rdflib/namespace` directory
   - ensure your Namespace class file references an eligible URI _(ex: `http://www.w3.org/1999/02/22-rdf-syntax-ns#`)_
@@ -22,14 +22,14 @@ A brief description about this program.
 ## Todo
 - [ ] enforce python version
 - [x] add linter
-- [x] enforce python standard
+- [ ] enforce python standard
 
 ## Research
 - [x] merge RDF graphs
 - [x] import custom URI
 - [x] create custom URI
 - [x] remove namespace from URI
-- [ ] check that all URI's are being used correctly
+- [x] check that all URI's are being used correctly
 - [ ] visualize RDF graph
 
 ## References
