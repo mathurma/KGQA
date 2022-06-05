@@ -40,13 +40,6 @@ class Query(object):
             "object": None
         }
 
-        # Gather SPO from graph
-        # subjects = _get_subjects(self.graph)
-        # subjects = [_remove_ns(self.graph, subj) for subj in subjects]
-        # predicates = _get_predicates(self.graph)
-        # predicates = [_remove_ns(self.graph, pred) for pred in predicates]
-        # objects = _get_objects(self.graph)
-        # objects = [_remove_ns(self.graph, obj) for obj in objects]
         subjects = _get_pos(self.graph, 0)
         predicates = _get_pos(self.graph, 1)
         objects = _get_pos(self.graph, 2)
@@ -89,24 +82,6 @@ class Query(object):
         self.filler[1] = translation["predicate"] if translation["predicate"] else self.filler[1]
         self.filler[2] = translation["object"] if translation["object"] else self.filler[2]
 
-        # PSEUDO
-        # for each triplet:
-        #   for each subject from graph:
-        #       compare sim and store highest
-        #   for each predicate from graph:
-        #       compare sim and store highest
-        #   for each object form graph:
-        #       compare sim and store highest
-        #   select highest of subject, predicate, object
-        # 
-        # if missing s p or o
-        #   replace with placeholder
-        # 
-        # for blank s p or o in query
-        #   substitute appropriate triplet
-
-        pass
-
 
     def fill(self):
         QN = self.question.type
@@ -114,16 +89,6 @@ class Query(object):
 
         self.query = self.query % (self.filler[0], self.filler[1], self.filler[2])
 
-        # s = "sprk:AlSmith"
-        # p = "spr:birthday"
-        # query = wh_query % (s, p)
-
-
-        # if conditions are met:
-            # determine eligible subject from graph
-            # determine eligible predicate from graph
-            # determine eligible object from graph
         
-
     def run(self):
         self.result = self.graph.query(self.query)
