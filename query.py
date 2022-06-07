@@ -40,8 +40,6 @@ def _pos_to_n3(graph: rdflib.Graph, pos):
         return pos
 
 def _rm_qts(n3: str):
-    print(n3[-1])
-    print(n3)
     if n3[0] == "'" and n3[-1] == "'" \
         or n3[0] == "\"" and n3[-1] == "\"" :
         return n3[1:-2]

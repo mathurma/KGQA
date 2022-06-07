@@ -42,7 +42,7 @@ def main(input):
 
 if __name__ == '__main__':
     try:
-        main(argv[1])
+        print(main(argv[1]))
     except ValueError as ve:
         print(ve)
     except TypeError as te:
