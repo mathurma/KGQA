@@ -3,7 +3,7 @@ This module contains mappings between the Question, Query, and Answer classes.
 These mappings define:
     - how input is classified as a question
     - how a question is translated into a query
-    - how a query informs the format of an answer
+    - how a question informs the format of an answer
 
 Variables: 
 
