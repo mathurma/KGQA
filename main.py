@@ -17,27 +17,30 @@ from answer import Answer
 
 def main(input):
 
-    # Question Phase
-    qn = Question(input)  # create question
-    qn.parse()  # parse SPO
-    qn.label()  # label question type
+    try:
+        # Question Phase
+        qn = Question(input)  # create question
+        qn.parse()  # parse SPO
+        qn.label()  # label question type
 
-    # Query Phase
-    qy = Query(qn)  # create query
-    qy.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#")  # parse graph
-    qy.link()  # link qn-S|P|O with graph-S|P|O
-    qy.fill()  # fill query template with graph-S|P|O
-    qy.run()  # run query
+        # Query Phase
+        qy = Query(qn)  # create query
+        qy.parse("https://raw.githubusercontent.com/mathurma/KGQA/main/resources/SPRK.ttl#")  # parse graph
+        qy.link()  # link qn-S|P|O with graph-S|P|O
+        qy.fill()  # fill query template with graph-S|P|O
+        qy.run()  # run query
 
-    ## Answer Phase
-    an = Answer(qy)  # create answer
-    an.fill()  # fill answer template with result-S|P|O
-    an.fix()  # fix grammatical errors
+        ## Answer Phase
+        an = Answer(qy)  # create answer
+        an.fill()  # fill answer template with result-S|P|O
+        an.fix()  # fix grammatical errors
 
-    # NOTE: to be removed once Answer functions above are implemented
-    an.tmp_ans()
+        # NOTE: to be removed once Answer functions above are implemented
+        an.tmp_ans()
 
-    return an.answer
+        return an.answer
+    except Exception as e:
+        return "ERROR: "+e
 
 
 if __name__ == '__main__':
